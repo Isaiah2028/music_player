@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./icon/iconfont.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>简陋音乐播放器</title>
+</head>
+
+<body>
+    <div class="player">
+        <!-- 音乐插图 -->
+        <section class="img">
+            <img id="bg-img" src="" alt="">
+        </section>
+        
+        <!-- 音乐信息 -->
+        <section class="info">
+            <!-- 进度条 -->
+            <div id="progress">
+                <div id="start">0:00</div>
+                <div id="bar"></div>
+                <div id="end">3:35</div>
+            </div>
+
+            <!-- 歌曲信息 -->
+            <div class="song-detail">
+                <div id="title"></div>
+                <div id="author"></div>
+            </div>
+
+            <!-- 按钮区域 -->
+            <div id="controls" class="controls">
+                <span class="iconfont icon-play" id="play">
+                    <i class="iconfont icon-danlieliebiao"></i>
+                </span>
+
+                <div class="play">
+                    <span><i id="voice" class="iconfont icon-shengyin_shiti">声音 </i></span>
+                    <span><i id="pre" class="iconfont icon-shangyishou">上一首</i></span>
+                    <span><i id="play" class="iconfont  -24gf-play">播放</i></span>
+                    <span><i id="next" class="iconfont icon-xiayishou2">上一首</i></span>
+                    <span><i id="mode" class="iconfont icon-xiayishou2">随机播放</i></span>
+                </div>
+                <span> <i id="add" class="iconfont icon-tianjia">添加</i></span>
+
+            </div>
+        </section>
+
+        <!-- audio 标签 -->
+        <section class="audio">
+            <audio id="audio" controls src=""></audio>
+        </section>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
