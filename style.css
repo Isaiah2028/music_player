@@ -24,10 +24,10 @@ body {
     height: 280px;
     position: relative;
     overflow: hidden;
-    border-radius: 5px  ;
-    box-shadow:  5px 5px 15px  rgba(179, 76, 21, 0.856);
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px rgba(179, 76, 21, 0.856);
     /* background-color: #de2e2e; */
-    transition: all 0.5s ease ease-in-out;    
+    transition: all 0.5s ease-in-out;
 }
 
 .player .img {
@@ -42,4 +42,100 @@ body {
     object-fit: cover;
     user-select: none;
     transition: .5s all ease-in-out;
+}
+
+.player .info {
+    width: 100%;
+    height: 120px;
+    background-color: #fff;
+    opacity: 0.9;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(35px) ;
+    transition: all 0.5s ease ease-in-out;
+}
+.player:hover .info{
+    transform: translateY(0);
+}
+
+.player:hover .img img {
+    transform: scale(1.1);
+}
+
+.info .progress {
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.info .progress #start,
+.info .progress #end {
+    margin: 0 12px;
+    user-select: none;
+}
+
+.info .progress #bar {
+    width: 300px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #bab5b59e;
+}
+
+/* 歌曲信息部分 */
+
+.info .song-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info .song-detail span {
+    margin: 4px 0;
+    height: 16px;
+    user-select: none;
+}
+
+.info .song-detail #title {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.info .song-detail #author {
+    letter-spacing: 1px;
+}
+
+/* 按钮 */
+.info .controls {
+    margin-top: 12px;
+    padding: 0 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info .controls .play{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info .controls .play span{
+    margin: 0 16px;
+    cursor: pointer;
+}
+
+.info .controls span {
+   user-select: none;
+}
+
+/* 隐藏audio */
+.audio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
