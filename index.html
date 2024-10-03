@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./icon/iconfont.css">
     <link rel="stylesheet" href="./style.css">
+    <!-- 引入 jQuery 库 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <title>Music Playe</title>
 </head>
 
@@ -43,15 +46,24 @@
                 <span> <i id="add" class="iconfont icon-tianjia"></i></span>
             </div>
         </section>
-
-        <!-- audio 标签 -->
-        <section class="audio">
-            <audio id="audio" controls src="">
-            </audio>
-        </section>
-
     </div>
+
+    <div class="song-list" >
+       <ul id="song-list">
+         <li id="song-item">Free Loop</li>
+         <li id="song-item">衡山路</li>
+         <li id="song-item">天空之城</li>
+         <li id="song-item">更多待续...</li>
+       </ul>
+    </div>
+
+    <!-- audio 标签 -->
+    <section class="audio">
+        <audio id="audio" controls src="">
+        </audio>
+    </section>
 
 </body>
 <script src="./script.js"></script>
+
 </html>

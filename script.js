@@ -36,18 +36,23 @@ const author = doc.querySelector('#author'); //作者
 const playBtn = doc.querySelector('#play'); //播放按钮
 const voiceBtn = doc.querySelector('#voice'); //音量控制
 
+const songl_ist = doc.querySelector('#song-list');
+
+const start_time = doc.querySelector('#start');
+const end_time = doc.querySelector('#end'); // 总时长（s）
+
+
 let curSongIndex = 1;
 let isPlay = false;
-//let voiceOn = true;
-
 function init() {
-  // 初始化页面
+  //初始化页面
   renderSong(songsList[curSongIndex]);
-  console.log('初始化完成...')
-
+  //获取所有歌曲列表
+  getsongList();
+  //绑定鼠标暑事件
   bindEvents();
-  // 绑定事件
-  //bindEvents();
+  console.log('初始化完成...');
+
 }
 
 //渲染歌曲信息
@@ -58,7 +63,13 @@ function renderSong(song) {
   bgImg.src = song.bgPath;
   audio.volume = 0.5;
   audio.src = song.path;
+
+  start_time.textContent = audio.currentTime;
+  end_time.textContent = audio.duration;
+  console.log( '歌曲时长：' + audio.duration);
+
 }
+
 
 // 按钮事件
 
@@ -67,6 +78,7 @@ function bindEvents() {
   controls.addEventListener('click', (e) => {
     switch (e.target?.id) {
       case 'list':
+        // showSongList();
         break;
       case 'voice':
         voiceControl();
@@ -115,7 +127,7 @@ function preSong() {
     curSongIndex--;
     renderSong(songsList[curSongIndex]);
     songPlay();
-  }else{
+  } else {
     alert('到底了哟~')
     songPlay();
   }
@@ -134,24 +146,79 @@ function nextSong() {
 }
 
 // 音量开关
-function voiceControl(){
-  if(audio.volume > 0){
+function voiceControl() {
+  if (audio.volume > 0) {
     voiceOff();
   }
-  else{
+  else {
     voiceOn();
   }
 }
 
-function voiceOff(){
+function voiceOff() {
   audio.volume = 0;
+  voiceBtn.classList.remove('icon-shengyin_shiti');
+  voiceBtn.classList.add('icon-volume-mute-fill');
+}
+
+function voiceOn() {
+  audio.volume = 0.5;
   voiceBtn.classList.remove('icon-volume-mute-fill');
   voiceBtn.classList.add('icon-shengyin_shiti');
 }
 
-function voiceOn(){
-  audio.volume = 0.5;
-  voiceBtn.classList.remove('icon-volume-mute-fill');
-  voiceBtn.classList.add('icon-volume-mute-fill');
+
+
+// function showSongList() {
+
+//   let song_list = getsongList();
+//   song_list.forEach(song => {
+//     if (Array.isArray(song)) { // 确保 data 是数组
+//       data.forEach(song => {
+//         console.log('5555::::' + song);
+//         renderSong(song);
+//       });
+//     } else {
+//       console.error('6666::: data is not an array');
+//     }
+//   });
+
+// }
+
+
+// 获取歌曲列表
+function getsongList() {
+  // ajax调用后段获取歌曲列表
+  //var songListTmp = [];
+  $.ajax({
+    url: 'http://localhost:19990/region/music/getAllSong',
+    type: 'get',
+    dataType: 'json',
+    success: function (res) {
+     // console.log('获取歌曲列表成功' + JSON.stringify(songListTmp));
+     songsList=res.data
+    }, error: function (err) {
+      console.log('获取个数失败' + err);
+    }
+  }).done(function () {    
+    return songListTmp;
+  });
+
+  
 }
+
+
+function showSongList(){
+  let songlist =  getsongList();
+  
+  for(let index = 0; index < songlist.length; index++) {
+    
+   // li渲染歌曲信息
+   let li = document.createElement('li');
+   songl_ist.innerHTML = `<li>${songlist[index].title}</li>`
+  }
+}
+
 init();
+
+

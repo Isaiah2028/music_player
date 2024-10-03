@@ -11,23 +11,25 @@
 
 body {
     height: 100vh;
+    width: 1300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'JosefinSans Light', sans-serif; /* 增加备用字体 */;
-    background: url('./image/bg1.jpg') no-repeat center center fixed;
+    font-family: 'JosefinSans Light', sans-serif;
+    background: url('./image/bg2.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
 .player {
     width: 380px;
-    height: 280px;
+    height: 200px;
     position: relative;
     overflow: hidden;
     border-radius: 5px;
     box-shadow: 5px 5px 15px rgba(179, 76, 21, 0.856);
     /* background-color: #de2e2e; */
     transition: all 0.5s ease-in-out;
+    margin-top: -510px;
 }
 
 .player .img {
@@ -51,10 +53,11 @@ body {
     opacity: 0.9;
     position: absolute;
     bottom: 0;
-    transform: translateY(35px) ;
+    transform: translateY(35px);
     transition: all 0.5s ease ease-in-out;
 }
-.player:hover .info{
+
+.player:hover .info {
     transform: translateY(0);
 }
 
@@ -117,19 +120,19 @@ body {
     align-items: center;
 }
 
-.info .controls .play{
+.info .controls .play {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.info .controls .play span{
+.info .controls .play span {
     margin: 0 16px;
     cursor: pointer;
 }
 
 .info .controls span {
-   user-select: none;
+    user-select: none;
 }
 
 /* 隐藏audio */
@@ -138,4 +141,29 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
+    display: none;
+}
+
+.song-list {
+    /* margin-right: 0; */
+    border-radius: 5px;
+    margin-top: -70px;
+    background-color: rgba(160, 232, 26, 0.579);
+    padding: 1em;
+    width: 380px;
+    height: auto;
+    display: flex;
+    overflow: hidden;
+    margin-left: -380px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px rgba(231, 231, 40, 0.477);
+    /* background-color: #de2e2e; */
+    transition: all 0.5s ease-in-out;
+    top: -43px;
+    line-height: 27px;
+
+}
+.song-list ul {
+    list-style: none;
 }
